@@ -10,7 +10,7 @@ class BulkShipmentsController < ApplicationController
       create_without_lock
     end
 
-    redirect_to @order
+    redirect_to orders_path
   end
 
   private

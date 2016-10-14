@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :orders, only: %i[index show create] do
+  resources :orders, only: %i[index create destroy] do
     resources :bulk_shipments, only: %i[create]
   end
 

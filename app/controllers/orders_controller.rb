@@ -1,12 +1,8 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
-  end
-
-  def show
-    @order = Order
+    @orders = Order
       .includes(:products, purchases: [:shipments])
-      .find(params[:id])
+      .all
   end
 
   def create
@@ -19,6 +15,11 @@ class OrdersController < ApplicationController
       end
     end
 
-    redirect_to @order
+    redirect_to orders_path
+  end
+
+  def destroy
+    Order.find(params[:id]).destroy
+    redirect_to orders_path
   end
 end

@@ -3,6 +3,6 @@ class ShipmentsController < ApplicationController
     purchase = Purchase.find(params[:purchase_id])
     purchase.shipments.create unless purchase.shipments.any?
 
-    redirect_to purchase.order
+    redirect_to orders_path
   end
 end

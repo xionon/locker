@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on("click", "[data-unsafe=true]", function(e) {
+  let action = $(e.target).parent("form").attr("action");
+  let params = {};
+  jQuery.post(action, params);
+  jQuery.post(action, params);
+});
+
+$(document).on("click", "[data-unsafe=false]", function(e) {
+  let action = $(e.target).parent("form").attr("action");
+  let params = { "lock": "true" };
+  jQuery.post(action, params);
+  jQuery.post(action, params);
+});

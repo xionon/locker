@@ -1,0 +1,10 @@
+<h1>Order <%= @order.id %></h1>
+
+<table>
+  <% @order.purchases.each do |purchase| %>
+    <tr>
+      <td><%= purchase.product.name %></td>
+      <td><%= purchase.shipments.count %></td>
+    </tr>
+  <% end %>
+</table>

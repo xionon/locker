@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20161014004342) do
   end
 
   create_table "shipments", force: :cascade do |t|
-    t.integer  "purchases_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["purchases_id"], name: "index_shipments_on_purchases_id", using: :btree
+    t.integer  "purchase_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["purchase_id"], name: "index_shipments_on_purchase_id", using: :btree
   end
 
   add_foreign_key "purchases", "orders"
   add_foreign_key "purchases", "products"
-  add_foreign_key "shipments", "purchases", column: "purchases_id"
+  add_foreign_key "shipments", "purchases"
 end

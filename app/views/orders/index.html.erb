@@ -1,4 +1,7 @@
 <h1>All orders</h1>
+<%= form_for Order.new do |f| %>
+  <%= f.button "Create new order" %>
+<% end %>
 <ul>
   <% @orders.each do |order| %>
     <li>

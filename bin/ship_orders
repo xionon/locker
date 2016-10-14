@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+APP_PATH = File.expand_path('../config/application', __dir__)
+require_relative '../config/boot'
+
+puts "Performing bulk_shipment 1"
+uri = URI("http://localhost:3000/orders/1/bulk_shipments/")
+[
+  Thread.new { Net::HTTP.post_form(uri, {}) },
+  Thread.new { Net::HTTP.post_form(uri, {}) }
+].map(&:join)
+
+puts "Performing bulk shipment 2"
+uri = URI("http://localhost:3000/orders/2/bulk_shipments/")
+[
+  Thread.new { Net::HTTP.post_form(uri, {"lock" => true}) },
+  Thread.new { Net::HTTP.post_form(uri, {"lock" => true}) }
+].map(&:join)

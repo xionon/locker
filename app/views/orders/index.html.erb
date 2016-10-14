@@ -3,9 +3,5 @@
   <%= f.button "Create new order" %>
 <% end %>
 <ul>
-  <% @orders.each do |order| %>
-    <li>
-      <%= link_to "order #{order.id}", order %>
-    </li>
-  <% end %>
+  <%= render @orders %>
 </ul>

@@ -1,10 +1,28 @@
 <h1>Order <%= @order.id %></h1>
 
 <table>
+  <tr>
+    <th>Product Name</th>
+    <th>Qty Shipped</th>
+    <th>Status</th>
+  </tr>
+
+  <tr>
+    <th></th>
+    <th></th>
+    <th><%= button_to "ship all", order_bulk_shipments_path(@order) %></th>
+  </tr>
+
   <% @order.purchases.each do |purchase| %>
     <tr>
       <td><%= purchase.product.name %></td>
-      <td><%= purchase.shipments.count %></td>
+      <td><%= purchase.shipments.count %> / 1</td>
+      <% unless purchase.shipments.any? %>
+        <td><%= button_to "ship it", purchase_shipments_path(purchase) %></td>
+      <% else %>
+        <td>shipped</td>
+      <% end %>
     </tr>
   <% end %>
+
 </table>

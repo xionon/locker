@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :shipments, only: %i[create]
   end
 
+  mount ActionCable.server => '/cable'
   root to: 'orders#index'
 end

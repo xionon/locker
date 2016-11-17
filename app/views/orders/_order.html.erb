@@ -2,8 +2,8 @@
 <table>
   <tr>
     <th><%= button_to "destroy", order_path(order), method: :delete %></th>
-    <th><%= button_to "unsafely ship all", order_bulk_shipments_path(order), data: {unsafe: "true"} %></th>
-    <th><%= button_to "safely ship all", order_bulk_shipments_path(order), data: {safe: "true"} %></th>
+    <th><%= button_to "unsafely ship all", order_bulk_shipments_path(order), data: {unsafe: "true"}, params: {lock: false} %></th>
+    <th><%= button_to "safely ship all", order_bulk_shipments_path(order), data: {unsafe: "false"}, params: {lock: true} %></th>
   </tr>
 </table>
 

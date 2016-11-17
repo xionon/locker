@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 
 module Locker
   class Application < Rails::Application
+    config.log_tags = [:uuid]
     
     config.generators do |generate|
       generate.test_framework :rspec
